@@ -11,7 +11,7 @@
         "url": "https://github.com/parpeoficial/stackerjs-db"
     },
     "main": "lib/index.js",
-
+    
     "dependencies": {
         "stackerjs-types": "^1.0.5",
         "stackerjs-utils": "^1.0.2"

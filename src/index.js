@@ -3,7 +3,7 @@ import { existsSync } from 'fs';
 
 
 const checkPackageExists = () => 
-    existsSync(`${process.cwd()}/${Config.get('db.driver')}`);
+    existsSync(`${process.cwd()}/node_modules/${Config.get('db.driver')}`);
 
 
 const loadPackageIfExists = () =>
