@@ -1,4 +1,6 @@
 [![Travis](https://img.shields.io/travis/parpeoficial/stackerjs-db.svg)](https://travis-ci.org/parpeoficial/stackerjs-db)
+[![Maintainability](https://api.codeclimate.com/v1/badges/65502c9d77431f4f8d31/maintainability)](https://codeclimate.com/github/parpeoficial/stackerjs-db/maintainability)
+[![Test Coverage](https://api.codeclimate.com/v1/badges/65502c9d77431f4f8d31/test_coverage)](https://codeclimate.com/github/parpeoficial/stackerjs-db/test_coverage)
 [![Dependencies](https://img.shields.io/david/parpeoficial/stackerjs-db.svg)](https://david-dm.org/parpeoficial/stackerjs-db)
 [![npm](https://img.shields.io/npm/dt/stackerjs-db.svg)](https://www.npmjs.com/package/stackerjs-db)
 
