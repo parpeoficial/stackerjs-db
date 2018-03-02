@@ -19,12 +19,12 @@ describe('Unit/FactoryTest', function()
 
         it('Should load QueryBuilder', () => 
         {
-            expect(DB.Factory.getQueryBuilder()).to.be.a('function');
+            expect(DB.Factory.getQueryBuilder()).to.be.an('object');
         });
 
         it('Should load QueryCriteria', () => 
         {
-            expect(DB.Factory.getQueryCriteria()).to.be.a('function');
+            expect(DB.Factory.getQueryCriteria()).to.be.an('object');
         });
 
         it('Should load Connection', () => 

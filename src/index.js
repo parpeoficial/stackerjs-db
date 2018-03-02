@@ -32,7 +32,7 @@ export const DB = {
         {
             let dbAdapter = loadPackageIfExists();
             if (dbAdapter)
-                return dbAdapter.QueryBuilder;
+                return new dbAdapter.QueryBuilder();
 
             return null;
         },
@@ -41,7 +41,7 @@ export const DB = {
         {
             let dbAdapter = loadPackageIfExists();
             if (dbAdapter)
-                return dbAdapter.QueryCriteria;
+                return new dbAdapter.QueryCriteria();
 
             return null;
         }

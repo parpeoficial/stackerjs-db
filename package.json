@@ -1,6 +1,6 @@
 {
     "name": "stackerjs-db",
-    "version": "1.0.0",
+    "version": "1.0.1",
     "author": {
         "name": "Vinicius Guedes",
         "email": "viniciusgued@gmail.com",
@@ -13,7 +13,7 @@
     "main": "lib/index.js",
 
     "dependencies": {
-        "stackerjs-types": "^1.0.6",
+        "stackerjs-types": "^1.0.7",
         "stackerjs-utils": "^1.0.2"
     },
     "devDependencies": {
