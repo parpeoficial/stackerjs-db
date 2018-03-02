@@ -14,7 +14,7 @@ describe('Unit/FactoryTest', function()
         before(() => 
         {
             execSync(`npm install stackerjs-db-mysql-adapter`);
-            Config.set('db.driver', 'stackerjs-db-mysql-adapter')
+            Config.set('db.driver', 'stackerjs-db-mysql-adapter');
         });
 
         it('Should load QueryBuilder', () => 
@@ -27,17 +27,22 @@ describe('Unit/FactoryTest', function()
             expect(DB.Factory.getQueryCriteria()).to.be.a('function');
         });
 
-        it('Should return null if package is not installed', () => 
+        it('Should load Connection', () => 
         {
-            execSync('npm uninstall stackerjs-db-mysql-adapter');
-            expect(DB.Factory.getQueryBuilder()).to.be.null;
+            expect(DB.Factory.getConnection()).to.be.an('object');
         });
-
-        after(() => Config.delete('db.driver'));
     });
 
     describe('Without DB_DRIVER setted', () => 
     {
+        before(() => execSync('npm uninstall stackerjs-db-mysql-adapter'));
+
+        it('Should return null if package is not installed', () => 
+        {
+            expect(DB.Factory.getQueryBuilder()).to.be.null;
+            Config.delete('db.driver');
+        });
+
         it('Should return null when loading Connection', () => 
         {
             expect(DB.Factory.getConnection()).to.be.null;

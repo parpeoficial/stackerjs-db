@@ -12,14 +12,20 @@ const loadPackageIfExists = () =>
 
 export const DB = {
 
+    'conn': null,
+
     'Factory': {
         'getConnection': () =>
         {
             let dbAdapter = loadPackageIfExists();
             if (dbAdapter)
-                return dbAdapter.Connection;
+                DB.conn = new dbAdapter.Connection();
 
-            return null;
+
+            if (!dbAdapter)
+                DB.conn = null;
+
+            return DB.conn;
         },
 
         'getQueryBuilder': () =>
