@@ -1,50 +1,40 @@
-import { Config } from 'stackerjs-utils';
-import { existsSync } from 'fs';
+import { Config } from "stackerjs-utils";
+import { existsSync } from "fs";
 
-
-const checkPackageExists = () => 
-    existsSync(`${process.cwd()}/node_modules/${Config.get('db.driver')}`);
-
+const checkPackageExists = () =>
+    existsSync(`${process.cwd()}/node_modules/${Config.get("db.driver")}`);
 
 const loadPackageIfExists = () =>
-    checkPackageExists() ? require(Config.get('db.driver')) : null;
-
+    checkPackageExists() ? require(Config.get("db.driver")) : null;
 
 export const DB = {
+    conn: null,
 
-    'conn': null,
-
-    'Factory': {
-        'getConnection': () =>
+    Factory: {
+        getConnection: () => 
         {
             let dbAdapter = loadPackageIfExists();
-            if (dbAdapter)
-                DB.conn = new dbAdapter.Connection();
+            if (dbAdapter) DB.conn = dbAdapter.Connection;
 
-
-            if (!dbAdapter)
-                DB.conn = null;
+            if (!dbAdapter) DB.conn = null;
 
             return DB.conn;
         },
 
-        'getQueryBuilder': () =>
+        getQueryBuilder: () => 
         {
             let dbAdapter = loadPackageIfExists();
-            if (dbAdapter)
-                return new dbAdapter.QueryBuilder();
+            if (dbAdapter) return new dbAdapter.QueryBuilder();
 
             return null;
         },
 
-        'getQueryCriteria': () =>
+        getQueryCriteria: () => 
         {
             let dbAdapter = loadPackageIfExists();
-            if (dbAdapter)
-                return new dbAdapter.QueryCriteria();
+            if (dbAdapter) return new dbAdapter.QueryCriteria();
 
             return null;
-        }
-    }
-
-}
+        },
+    },
+};

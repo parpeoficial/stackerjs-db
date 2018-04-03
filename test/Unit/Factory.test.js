@@ -1,62 +1,59 @@
-import { Config } from 'stackerjs-utils';
-import { expect } from 'chai';
-import { DB } from './../../lib';
-import { execSync } from 'child_process';
+import { Config } from "stackerjs-utils";
+import { expect } from "chai";
+import { DB } from "./../../lib";
+import { execSync } from "child_process";
 
-
-describe('Unit/FactoryTest', function() 
+describe("Unit/FactoryTest", function() 
 {
+    this.timeout(10000);
 
-    this.timeout(10000);    
-
-    describe('With DB_DRIVER setted', () => 
+    describe("With DB_DRIVER setted", () => 
     {
         before(() => 
         {
-            execSync(`npm install stackerjs-db-mysql-adapter`);
-            Config.set('db.driver', 'stackerjs-db-mysql-adapter');
+            execSync("npm install stackerjs-db-mysql-adapter");
+            Config.set("db.driver", "stackerjs-db-mysql-adapter");
         });
 
-        it('Should load QueryBuilder', () => 
+        it("Should load QueryBuilder", () => 
         {
-            expect(DB.Factory.getQueryBuilder()).to.be.an('object');
+            expect(DB.Factory.getQueryBuilder()).to.be.an("object");
         });
 
-        it('Should load QueryCriteria', () => 
+        it("Should load QueryCriteria", () => 
         {
-            expect(DB.Factory.getQueryCriteria()).to.be.an('object');
+            expect(DB.Factory.getQueryCriteria()).to.be.an("object");
         });
 
-        it('Should load Connection', () => 
+        it("Should load Connection", () => 
         {
-            expect(DB.Factory.getConnection()).to.be.an('object');
+            expect(DB.Factory.getConnection()).to.be.an("function");
         });
     });
 
-    describe('Without DB_DRIVER setted', () => 
+    describe("Without DB_DRIVER setted", () => 
     {
-        before(() => execSync('npm uninstall stackerjs-db-mysql-adapter'));
+        before(() => execSync("npm uninstall stackerjs-db-mysql-adapter"));
 
-        it('Should return null if package is not installed', () => 
+        it("Should return null if package is not installed", () => 
         {
             expect(DB.Factory.getQueryBuilder()).to.be.null;
-            Config.delete('db.driver');
+            Config.delete("db.driver");
         });
 
-        it('Should return null when loading Connection', () => 
+        it("Should return null when loading Connection", () => 
         {
             expect(DB.Factory.getConnection()).to.be.null;
         });
 
-        it('Should return null when loading QueryBuilder', () => 
+        it("Should return null when loading QueryBuilder", () => 
         {
             expect(DB.Factory.getQueryBuilder()).to.be.null;
         });
 
-        it('Should return null when loading QueryCriteria', () => 
+        it("Should return null when loading QueryCriteria", () => 
         {
             expect(DB.Factory.getQueryCriteria()).to.be.null;
         });
     });
-
 });
