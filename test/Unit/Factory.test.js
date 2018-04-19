@@ -5,7 +5,7 @@ import { execSync } from "child_process";
 
 describe("Unit/FactoryTest", function() 
 {
-    this.timeout(10000);
+    this.timeout(20000);
 
     describe("With DB_DRIVER setted", () => 
     {
