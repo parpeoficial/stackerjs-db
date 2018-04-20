@@ -11,7 +11,8 @@ export const DB = {
     conn: null,
 
     Factory: {
-        getConnection: () => {
+        getConnection: () => 
+        {
             let dbAdapter = loadPackageIfExists();
             if (dbAdapter && !DB.conn)
                 DB.conn = dbAdapter.Connection;
@@ -22,14 +23,16 @@ export const DB = {
             return DB.conn;
         },
 
-        getQueryBuilder: () => {
+        getQueryBuilder: () => 
+        {
             let dbAdapter = loadPackageIfExists();
             if (dbAdapter) return new dbAdapter.QueryBuilder();
 
             return null;
         },
 
-        getQueryCriteria: () => {
+        getQueryCriteria: () => 
+        {
             let dbAdapter = loadPackageIfExists();
             if (dbAdapter) return new dbAdapter.QueryCriteria();
 
